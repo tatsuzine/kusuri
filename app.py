@@ -2,7 +2,10 @@ import streamlit as st
 import google.generativeai as genai
 from PIL import Image
 
-# --- 設定 ---
+# 使えるモデルを確認するデバッグ用コード
+for m in genai.list_models():
+    if 'generateContent' in m.supported_generation_methods:
+        st.write(f"利用可能モデル: {m.name}")# --- 設定 ---
 st.set_page_config(page_title="歯科専用お薬解析", layout="centered")
 st.title("🦷 歯科用お薬手帳チェッカー")
 st.caption("※個人情報保護のため、お名前や住所は隠して撮影することを推奨します。")
@@ -47,3 +50,4 @@ if uploaded_file:
                 st.info("💡 最終的な臨床判断は必ず歯科医師が行ってください。")
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
+
