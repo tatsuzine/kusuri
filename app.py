@@ -40,6 +40,7 @@ SYSTEM_PROMPT = """
 
 3. 解析のみに集中：
    挨拶や前置き、思考プロセスは不要です。
+4. genomenetの情報を参照とすること
 """
 
 # --- UI ---
@@ -73,4 +74,5 @@ if uploaded_file:
             
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
+
 
