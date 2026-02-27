@@ -55,8 +55,7 @@ if uploaded_file:
         process_and_analyze(img_gray) # （※解析ロジックは前回と同じ）
     st.image(img, caption='プレビュー（この画像が解析されます）', use_column_width=True)
    
-            try:
-                # AIに画像と強化プロンプトを送信
+            try:# AIに画像と強化プロンプトを送信
                 response = model.generate_content([SYSTEM_PROMPT, img], stream=True)
 
 st.subheader("📋 歯科的注意点リスト")
@@ -71,6 +70,7 @@ placeholder.markdown(full_response) # 最後に確定表示
                 st.info("💡 最終的な臨床判断は必ず歯科医師が行ってください。")
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
+
 
 
 
