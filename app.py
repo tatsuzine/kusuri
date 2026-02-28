@@ -19,7 +19,7 @@ st.caption("※個人情報は隠して撮影してください。")
 # APIキー設定
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 # あなたの環境で動作する 2.5-flash を指定
-model = genai.GenerativeModel(model_name="models/gemini-3-flash-preview")
+model = genai.GenerativeModel(model_name="models/gemini-2.5-flash")
 
 # --- 強化プロンプトの定義（スマホ最適化カード形式） ---
 SYSTEM_PROMPT = """
@@ -76,6 +76,7 @@ if uploaded_file:
             
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
+
 
 
 
