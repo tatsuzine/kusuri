@@ -1,10 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 from PIL import Image
-# 使えるモデルを確認するデバッグ用コード
-for m in genai.list_models():
-    if 'generateContent' in m.supported_generation_methods:
-        st.write(f"利用可能モデル: {m.name}")
+
 # 1. 画面の設定（スマホで見やすく）
 st.set_page_config(page_title="歯科専用お薬解析", layout="centered")
 
@@ -22,7 +19,7 @@ st.caption("※個人情報は隠して撮影してください。")
 # APIキー設定
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 # あなたの環境で動作する 2.5-flash を指定
-model = genai.GenerativeModel(model_name="models/gemini-2.5-flash")
+model = genai.GenerativeModel(model_name="models/gemini-3-flash-preview")
 
 # --- 強化プロンプトの定義（スマホ最適化カード形式） ---
 SYSTEM_PROMPT = """
@@ -79,6 +76,7 @@ if uploaded_file:
             
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
+
 
 
 
